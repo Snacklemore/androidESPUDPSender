@@ -13,6 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="40dp"
+        android:onClick="Save"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/SendButton"
         app:layout_constraintEnd_toStartOf="@+id/editTextBtn1"
@@ -37,10 +38,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginEnd="21dp"
         android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/TxtEditLocalPort"
         app:layout_constraintEnd_toStartOf="@+id/editTextBtn4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SetButtons" />
@@ -50,40 +50,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="17dp"
         android:layout_marginBottom="23dp"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toStartOf="@+id/editTextBtn3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/TxtEditLocalPort" />
 
     <EditText
         android:id="@+id/editTextPort"
-        android:layout_width="188dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="89dp"
-        android:layout_marginBottom="91dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
+        android:hint="PORT"
         android:inputType="textPersonName"
-        android:text="PORT"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextBtn4"
-        app:layout_constraintEnd_toEndOf="@+id/button4"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toTopOf="@+id/ButtonListen" />
+        app:layout_constraintBottom_toBottomOf="@+id/SetButtons"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextIP" />
 
     <EditText
         android:id="@+id/editTextIP"
         android:layout_width="0dp"
-        android:layout_height="46dp"
+        android:layout_height="62dp"
         android:layout_marginStart="11dp"
-        android:layout_marginTop="87dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="89dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="91dp"
         android:ems="10"
+        android:hint="IP"
         android:inputType="textPersonName"
-        android:text="IP"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextPort"
+        app:layout_constraintBottom_toBottomOf="@+id/SetButtons"
         app:layout_constraintEnd_toStartOf="@+id/ButtonListen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -92,10 +94,9 @@
         android:id="@+id/textViewRec"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="24dp"
         android:text="Received...."
         app:layout_constraintBottom_toTopOf="@+id/ButtonListen"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,32 +118,27 @@
     <EditText
         android:id="@+id/editTextBtn4"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="12dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="21dp"
         android:ems="10"
+        android:hint="Change"
         android:inputType="textPersonName"
-        android:text="Change"
-        app:layout_constraintBottom_toTopOf="@+id/editTextBtn3"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/TxtEditLocalPort"
+        app:layout_constraintEnd_toStartOf="@+id/TxtEditLocalPort"
         app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toTopOf="@+id/button4" />
+        app:layout_constraintTop_toTopOf="@+id/TxtEditLocalPort" />
 
     <EditText
         android:id="@+id/editTextBtn3"
         android:layout_width="0dp"
         android:layout_height="43dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginEnd="139dp"
         android:ems="10"
+        android:hint="Change"
         android:inputType="textPersonName"
-        android:text="Change"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextBtn2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/SetButtons" />
+        app:layout_constraintStart_toEndOf="@+id/button3" />
 
     <EditText
         android:id="@+id/editTextBtn2"
@@ -150,8 +146,8 @@
         android:layout_height="40dp"
         android:layout_marginEnd="131dp"
         android:ems="10"
+        android:hint="Change"
         android:inputType="textPersonName"
-        android:text="Change"
         app:layout_constraintBaseline_toBaselineOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button2" />
@@ -162,8 +158,8 @@
         android:layout_height="43dp"
         android:layout_marginEnd="131dp"
         android:ems="10"
+        android:hint="Change"
         android:inputType="textPersonName"
-        android:text="Change"
         app:layout_constraintBaseline_toBaselineOf="@+id/button1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button1" />
@@ -175,32 +171,60 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="9dp"
         android:ems="10"
+        android:hint="Message.."
         android:inputType="textPersonName"
-        android:text="Message.."
         app:layout_constraintBottom_toBottomOf="@+id/SendButton"
         app:layout_constraintEnd_toStartOf="@+id/SendButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/SendButton" />
 
     <Button
+        android:id="@+id/SetButtons"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="40dp"
+        android:text="Set"
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextPort"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCancel" />
+
+    <Button
         android:id="@+id/ButtonListen"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="6dp"
-        android:layout_marginBottom="42dp"
+        android:layout_marginBottom="2dp"
         android:text="Listen"
-        app:layout_constraintBottom_toTopOf="@+id/SetButtons"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editTextIP"
         app:layout_constraintTop_toBottomOf="@+id/textViewRec" />
 
-    <Button
-        android:id="@+id/SetButtons"
-        android:layout_width="150dp"
+    <EditText
+        android:id="@+id/TxtEditLocalPort"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="100dp"
-        android:text="Set"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        android:layout_marginEnd="22dp"
+        android:ems="10"
+        android:hint="Port"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextBtn4"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="2dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toTopOf="@+id/SetButtons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextPort"
         app:layout_constraintTop_toBottomOf="@+id/ButtonListen" />
+
 </android.support.constraint.ConstraintLayout>

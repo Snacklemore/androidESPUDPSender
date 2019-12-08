@@ -17,10 +17,12 @@ import java.net.InetSocketAddress;
 import java.net.NetworkInterface;
 import java.net.PortUnreachableException;
 import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.nio.ByteOrder;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import static android.content.Context.WIFI_SERVICE;
 
@@ -28,6 +30,7 @@ public class Listen  implements Runnable{
     private boolean shutdown = true;
     String IP;
     int Port;
+    int messageCounter = 0;
     private TextView txtV;
     private Context mContext;
     DatagramSocket Socket;
@@ -66,6 +69,7 @@ public class Listen  implements Runnable{
     public void setShutdown()
     {
         shutdown = false;
+        txtV.setText("Canceled Listening");
     }
 
     @Override
@@ -76,7 +80,9 @@ public class Listen  implements Runnable{
 
         try {
             Socket = new DatagramSocket(Port);
+            Socket.setSoTimeout(2000);
             DatagramPacket packet;
+            txtV.setText("Started Listening..");
 
 
 
@@ -87,20 +93,33 @@ public class Listen  implements Runnable{
         while (shutdown)
         {
 
-
+            try{
                 byte[] buf = new byte[256];
 
                 packet = new DatagramPacket(buf,buf.length);
                 Socket.receive(packet);
+                messageCounter++;
                 String text = new String(buf,0,packet.getLength());
-                txtV.setText("DEVICEIP:"+IP+text);
+                txtV.setText("No:"+messageCounter+"IP:>"+IP+"*: "+text);
+
+            }catch (SocketTimeoutException te)
+            {
+                if ( Thread.currentThread().isInterrupted())
+                {
+                    Socket.close();
+                    setShutdown();
+                }
+                continue;
+            }
+        }
 
 
 
 
 
         }
-        }catch (Exception e)
+
+        catch (Exception e)
         {
             e.printStackTrace();
         }

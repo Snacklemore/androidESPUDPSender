@@ -40,13 +40,14 @@ public class MainActivity extends AppCompatActivity {
     Listen threadRefListen;
     Context mContext;
     Context ActiContext;
+    private boolean isListening= false;
 
     SharedPreferences sharedPreferences;
     public void Save()
     {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         String db = TxtEditIP.getText().toString();
-        editor.putString("LocalPort",TxtLocalPortEdit.toString());
+        editor.putString("LocalPort",TxtLocalPortEdit.getText().toString());
         editor.putString("IP",TxtEditIP.getText().toString());
         editor.putString("Port",TxtEditPort.getText().toString());
         editor.putString("Btn1",Button1.getText().toString());
@@ -66,11 +67,15 @@ public class MainActivity extends AppCompatActivity {
         Listen task = new Listen(ip,port,mContext,txtV);
         //threadRefListen = task;
         TManager.getManagerInstance().submitTask(task);
+        isListening = true;
 
     }
     private void stopListeningTask()
     {
+        if (isListening)
         TManager.getManagerInstance().Cancel();
+        else
+            return;
 
     }
 
@@ -78,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         String LocalPort = TxtLocalPortEdit.getText().toString();
         String IP = TxtEditIP.getText().toString();
         String Port = TxtEditPort.getText().toString();
-        Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+        Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?(\\.\\d+)?(\\.\\d+)?");
 
 
 
